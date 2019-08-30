@@ -16,17 +16,18 @@ from prepData import get_data
 import configSession
 
 
-def get_text_cnn(inputs, max_length, dim=25):
+def build_text_cnn(inputs, max_length, dim=25):
     """
     'input' - vocabulary size, a number of unique words in
               our data set
-    'max_lenght' - the maximum number of words in our data set
-    'dim' - word embedding dimension, the lenght of word vector
+    'max_length' - the maximum number of words in our data set
+    'dim' - word embedding dimension, the length of word vector
             that will be produced by this layer
     """
 
     print('CNN inputs: %d, word embeddings dimesions: %d, input_length: %d' % (inputs, dim, max_length))
     model = Sequential()
+    # The Embedding layer can only be used as the first layer. 
     model.add(Embedding(inputs, dim, input_length=max_length))
     # Extract feature maps/most common "phrases".
     model.add(Conv1D(filters=32, kernel_size=5, activation='relu', padding='same'))
@@ -40,16 +41,16 @@ def get_text_cnn(inputs, max_length, dim=25):
     return model
 
 
-confs = {'default': dict(model=get_text_cnn)}
+confs = {'default': dict(model=build_text_cnn)}
 
 
-def train_model(name, train_x, train_y, epochs, batches, inputs, max_lenght, test_x, test_y):
+def train_model(name, train_x, train_y, epochs, batches, inputs, max_length, test_x, test_y):
     """
-    Compile and train the model with choosen parameters.
+    Compile and train the model with the chosen parameters.
     """
     mparams = confs[name]
     model = mparams['model']
-    model = model(inputs, max_lenght)
+    model = model(inputs, max_length)
     # Compile model
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     # Fit model on training data, validate during training on test data.
