@@ -21,13 +21,14 @@ def encode_text(text2encode, tokenizer, max_len=None, for_training=False, ):
     """
     Return text encoded in a way that we can use it in a neural network.
     Function parameters:
-    'text2encode' - a list of text
+    'text2encode' - plain text to be encoded
     'tokenizer' - Python's tokenizer object
     'max_len' - the maximum length of sentence (in words), if a sentence
                 is shorter than max_len pad it to match the max length
 
     'for_training' - determine if we're working with training data or not,
-                   we do two unique things in training: fit tokenizer and generate max_len
+                     we do two unique things in training: fit tokenizer on 
+                     the text and compute max_len value.
 
     An example of encoded sentence:
     Input sentence: "isn't it the ultimate sign of a movie's cinematic "
@@ -57,12 +58,12 @@ def encode_text(text2encode, tokenizer, max_len=None, for_training=False, ):
     encoded_txt = tokenizer.texts_to_sequences(text2encode)
 
     # We're looking for the longest sentence in our training set.
-    # Then we will use it when we ran encode_text() on test data.
-    # The key here is to have maximum lenght all the same trougout
+    # Then we will use it when we run encode_text() on test data.
+    # The key here is to have maximum lenght all the same troughout
     # training and data sets.
     if not max_len:
         max_len = max([len(s.split()) for s in text2encode])
-        tokenizer._max_padding_len=max_len
+        tokenizer._max_padding_len = max_len
 
     # We need to pad our encoded text to the maximum lenght
     # for our embedding layer to work properly.

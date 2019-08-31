@@ -19,15 +19,17 @@ import configSession
 def build_text_cnn(inputs, max_length, dim=25):
     """
     'input' - vocabulary size, a number of unique words in
-              our data set
-    'max_length' - the maximum number of words in our data set
+              our data set.
+    'max_length' - the maximum number of words in our data set.
     'dim' - word embedding dimension, the length of word vector
-            that will be produced by this layer
+            that will be produced by this layer.
     """
-
-    print('CNN inputs: %d, word embeddings dimesions: %d, input_length: %d' % (inputs, dim, max_length))
+    print("CNN inputs: %d, word embeddings dimesions: %d, input_length: %d\n" % (inputs, dim, max_length))
     model = Sequential()
-    # The Embedding layer can only be used as the first layer. 
+    # The Embedding layer can only be used as the first layer.
+    # It creates word vectors & determines spacial relationships
+    # between these words vectors. The idea is that similar words
+    # will have similar word vectors.
     model.add(Embedding(inputs, dim, input_length=max_length))
     # Extract feature maps/most common "phrases".
     model.add(Conv1D(filters=32, kernel_size=5, activation='relu', padding='same'))
@@ -36,7 +38,7 @@ def build_text_cnn(inputs, max_length, dim=25):
     # Just put everything together into one vector.
     model.add(Flatten())
     # This is the standard output for classification.
-    # It matches our two classes 0 and 1.
+    # It matches our two classes '0' and '1'.
     model.add(Dense(1, activation='sigmoid'))
     return model
 
@@ -52,7 +54,8 @@ def train_model(name, train_x, train_y, epochs, batches, inputs, max_length, tes
     model = mparams['model']
     model = model(inputs, max_length)
     # Compile model
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    #model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
     # Fit model on training data, validate during training on test data.
     model.fit(train_x, train_y, validation_data=(test_x, test_y), epochs=epochs, batch_size=batches, verbose=2)
 
