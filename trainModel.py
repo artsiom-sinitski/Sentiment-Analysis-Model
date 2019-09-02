@@ -53,8 +53,7 @@ def train_model(name, train_x, train_y, epochs, batches, inputs, max_length, tes
     mparams = confs[name]
     model = mparams['model']
     model = model(inputs, max_length)
-    # Compile model
-    #model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    # Compile model, a possible value for metrics=['accuracy']
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
     # Fit model on training data, validate during training on test data.
     model.fit(train_x, train_y, validation_data=(test_x, test_y), epochs=epochs, batch_size=batches, verbose=2)

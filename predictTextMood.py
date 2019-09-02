@@ -68,4 +68,12 @@ if __name__ == '__main__':
         prob = model.predict_proba(t)
         print("\nprob.shape: ", prob.shape, "value: ", prob)
         prob = prob[0][0]
-        print("%s ->%smean (%.2f%% probability)" % (tweet.rstrip(), (' not ' if pred_class==1 else ' '), prob*100) )
+
+        if pred_class == 1:
+            txtMood = "positive"
+            probPercent = prob*100
+        else:   #this is a mean tweet
+            txtMood = "negative"
+            probPercent = (1-prob)*100
+         
+        print("<%s> -> %s mood (%.2f%% probability)" % (tweet.strip(), txtMood, probPercent) )
