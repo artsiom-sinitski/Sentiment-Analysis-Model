@@ -1,0 +1,71 @@
+train.py default 10 31
+No cleanup
+Vocab size:
+41513
+Train/Test Data length 1800 200
+CNN: inputs: 41513, word embeddings dimensions: 25, input_length: 2570
+Train on 1800 samples, validate on 200 samples
+Epoch 1/10
+ - 17s - loss: 0.6917 - acc: 0.5244 - val_loss: 0.6882 - val_acc: 0.5550
+Epoch 2/10
+ - 17s - loss: 0.6475 - acc: 0.6283 - val_loss: 0.6858 - val_acc: 0.5600
+Epoch 3/10
+ - 19s - loss: 0.5445 - acc: 0.7867 - val_loss: 0.6518 - val_acc: 0.6100
+Epoch 4/10
+ - 20s - loss: 0.2848 - acc: 0.9900 - val_loss: 0.5410 - val_acc: 0.7600
+Epoch 5/10
+ - 17s - loss: 0.0809 - acc: 0.9989 - val_loss: 0.4541 - val_acc: 0.7750
+Epoch 6/10
+ - 16s - loss: 0.0255 - acc: 1.0000 - val_loss: 0.4122 - val_acc: 0.8350
+Epoch 7/10
+ - 18s - loss: 0.0124 - acc: 1.0000 - val_loss: 0.3941 - val_acc: 0.8350 *
+
+Test Accuracy: 83,5%
+
+Clean up, with stopwords.
+Vocab size:
+36312
+Train/Test Data length 1800 200
+CNN: inputs: 36312, word embeddings dimensions: 25, input_length: 2127
+Train on 1800 samples, validate on 200 samples
+Epoch 1/10
+ - 15s - loss: 0.6905 - acc: 0.5278 - val_loss: 0.6871 - val_acc: 0.5700
+Epoch 2/10
+ - 14s - loss: 0.6456 - acc: 0.6289 - val_loss: 0.6815 - val_acc: 0.5700
+Epoch 3/10
+ - 14s - loss: 0.5380 - acc: 0.7944 - val_loss: 0.6127 - val_acc: 0.6750
+Epoch 4/10
+ - 14s - loss: 0.2591 - acc: 0.9833 - val_loss: 0.4521 - val_acc: 0.7900
+Epoch 5/10
+ - 14s - loss: 0.0693 - acc: 0.9978 - val_loss: 0.3784 - val_acc: 0.8100
+Epoch 6/10
+ - 14s - loss: 0.0221 - acc: 1.0000 - val_loss: 0.3516 - val_acc: 0.8150
+Epoch 7/10
+ - 15s - loss: 0.0110 - acc: 1.0000 - val_loss: 0.3491 - val_acc: 0.8200
+Epoch 8/10
+ - 14s - loss: 0.0062 - acc: 1.0000 - val_loss: 0.3448 - val_acc: 0.8200
+Epoch 9/10
+ - 14s - loss: 0.0041 - acc: 1.0000 - val_loss: 0.3411 - val_acc: 0.8250 *
+Epoch 10/10
+ - 14s - loss: 0.0030 - acc: 1.0000 - val_loss: 0.3423 - val_acc: 0.8300
+
+Test Accuracy: 82,5%
+
+Clean up, remove stop words.
+Vocab size:
+36178
+Train/Test Data length 1800 200
+CNN: inputs: 36178, word embeddings dimensions: 25, input_length: 1134
+Train on 1800 samples, validate on 200 samples
+Epoch 1/10
+ - 9s - loss: 0.6908 - acc: 0.5222 - val_loss: 0.6848 - val_acc: 0.5650
+Epoch 2/10
+ - 8s - loss: 0.6343 - acc: 0.6550 - val_loss: 0.6681 - val_acc: 0.5700
+Epoch 3/10
+ - 8s - loss: 0.4542 - acc: 0.8661 - val_loss: 0.4814 - val_acc: 0.7950
+Epoch 4/10
+ - 8s - loss: 0.1345 - acc: 0.9872 - val_loss: 0.3149 - val_acc: 0.8850 *
+Epoch 5/10
+ - 8s - loss: 0.0254 - acc: 1.0000 - val_loss: 0.2895 - val_acc: 0.8700
+
+Test Accuracy: 88,5%
