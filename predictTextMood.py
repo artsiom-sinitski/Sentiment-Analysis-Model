@@ -60,13 +60,13 @@ if __name__ == '__main__':
         # Classify our tweet mood:
         # '0' - negative and '1' - positive.
         pred_class = model.predict_classes(t)
-        print("\nprob class: ", pred_class, "value: ", pred_class[0][0])
+        #print("\nprob class: ", pred_class, "value: ", pred_class[0][0])
         pred_class = pred_class[0][0]
         # We can also get the probablity of prediction being in a given class.
         # By default we get the probablity of being positive. We can get the 
         # probablity of tweet being "mean" just by calculating (1-prob).
         prob = model.predict_proba(t)
-        print("\nprob.shape: ", prob.shape, "value: ", prob)
+        #print("\nprob.shape: ", prob.shape, "value: ", prob)
         prob = prob[0][0]
 
         if pred_class == 1:

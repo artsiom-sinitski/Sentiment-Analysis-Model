@@ -45,7 +45,9 @@ $> python trainModel.py default 7 32
 
 - Third, make the model predict by running from the command line:
 ```
-$> python predictTextMood.py default 7 32
+    $> python predictTextMood.py default 7 32
+OR to make the model read tweets from "Tweets_samples.txt" file, type in:
+    $> cat ./data/Tweets_samples.txt | python predictTextMood.py default 7 32
 ```
 ## Team
 
